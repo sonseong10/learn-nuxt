@@ -1,10 +1,12 @@
 <template>
   <div>
-    <h1>home page</h1>
-    <p>start nuxt.js</p>
+    <h1>{{ $route.name }}템플릿</h1>
+    <Nuxt />
   </div>
 </template>
 
 <script>
 export default {}
 </script>
+
+<style></style>
