@@ -47,7 +47,5 @@ export default {
 .btn {
   font-size: 1.2rem;
   font-weight: 700;
-  border: 1px solid #666;
-  cursor: pointer;
 }
 </style>
