@@ -24,6 +24,11 @@
         </ul>
       </div>
     </main>
+    <div class="btn-wrapper">
+      <button class="cart-btn" type="button" @click="moveToCartPage">
+        Cart
+      </button>
+    </div>
   </div>
 </template>
 
@@ -52,6 +57,10 @@ export default {
   methods: {
     moveToDetailPage(id) {
       this.$router.push(`product/${id}`)
+    },
+
+    moveToCartPage() {
+      this.$router.push(`cart`)
     },
 
     async searchProduct() {
@@ -83,6 +92,26 @@ export default {
 .product-image {
   width: 400px;
   height: 250px;
+}
+
+.btn-wrapper {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 20%);
+}
+
+.cart-btn {
+  padding: 8px;
+  height: 46px;
+  background-color: #00c58e;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  border: none;
+  cursor: pointer;
 }
 
 .app {

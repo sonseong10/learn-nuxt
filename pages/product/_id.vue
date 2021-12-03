@@ -9,8 +9,19 @@
         />
       </div>
       <div class="side-panel">
-        <p class="name">{{ product.name }}</p>
-        <p class="price">{{ product.price }}</p>
+        <header class="side-header">
+          <p class="name">{{ product.name }}</p>
+        </header>
+
+        <div class="side-body">
+          <p class="price">{{ product.price }}</p>
+        </div>
+
+        <footer class="side-footer">
+          <button class="btn" type="button" @click="moveToCartPage">
+            Add Cart
+          </button>
+        </footer>
       </div>
     </div>
   </div>
@@ -25,6 +36,13 @@ export default {
     const res = await fetchProductById(id)
     const product = res.data
     return { product }
+  },
+
+  methods: {
+    moveToCartPage() {
+      this.$store.commit('addToCart', this.product)
+      this.$router.push(`/cart`)
+    },
   },
 }
 </script>
@@ -48,5 +66,18 @@ export default {
   width: 220px;
   text-align: center;
   padding: 0 1rem;
+}
+
+.side-footer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn {
+  width: 100%;
+  height: 36px;
+  font-size: 1rem;
+  font-weight: 700;
 }
 </style>
