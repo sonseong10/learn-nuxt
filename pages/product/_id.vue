@@ -18,9 +18,7 @@
         </div>
 
         <footer class="side-footer">
-          <button class="btn" type="button" @click="moveToCartPage">
-            Add Cart
-          </button>
+          <button class="btn" type="button" @click="addToCart">Add Cart</button>
         </footer>
       </div>
     </div>
@@ -28,7 +26,7 @@
 </template>
 
 <script>
-import { fetchProductById } from '@/apis/index'
+import { fetchProductById, createCartItem } from '@/apis/index'
 
 export default {
   async asyncData({ params }) {
@@ -39,7 +37,11 @@ export default {
   },
 
   methods: {
-    moveToCartPage() {
+    async addToCart() {
+      await createCartItem(this.product)
+        .then((res) => console.log(res))
+        .catch((error) => console.error(error))
+
       this.$store.commit('addToCart', this.product)
       this.$router.push(`/cart`)
     },
