@@ -27,4 +27,8 @@ export const actions = {
     }))
     commit('setCartItems', newItems)
   },
+
+  async nuxtServerInit({ dispatch }, nuxtContext) {
+    await dispatch('fetchCartList')
+  },
 }
